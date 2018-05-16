@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'Index.vue',
+  name: 'Index',
   data () {
     return {
       title: '这是首页'
