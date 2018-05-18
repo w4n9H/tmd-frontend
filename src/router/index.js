@@ -5,7 +5,6 @@ import Index from '@/components/Index'
 import HTTPEvent from '@/components/HTTPEvent'
 import DNSEvent from '@/components/DNSEvent'
 import MalEvent from '@/components/MalEvent'
-import MalBehavior from '@/components/MalBehavior'
 import RuleStatic from '@/components/RuleStatic'
 import RuleCustom from '@/components/RuleCustom'
 
@@ -38,11 +37,6 @@ export default new Router({
           path: '/mal_event',
           component: MalEvent,
           name: '恶意事件'
-        },
-        {
-          path: '/mal_behavior',
-          component: MalBehavior,
-          name: '恶意行为'
         },
         {
           path: '/rule_static',
