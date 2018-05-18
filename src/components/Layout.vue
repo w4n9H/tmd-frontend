@@ -1,19 +1,24 @@
 <template>
-  <div>
+  <div class="layout">
     <el-container>
       <el-header>
-        <div class="title-wrapper">{{ tmd_title }}</div>
+        <div class="title-wrapper">
+          <div class="logo">
+              <img :src="logo">
+          </div>
+          <div>
+            <span>{{ tmd_title }}</span>
+          </div>
+        </div>
       </el-header>
       <el-container>
-        <el-aside width="200px" height="100%">
-          <el-menu :default-active="active_index" background-color="#000"
-                   text-color="#fff" active-text-color="#5eb2eb" router>
+        <el-aside width="160px">
+          <el-menu :default-active="active_index" text-color="#fff" active-text-color="#5eb2eb" router>
             <el-menu-item index="index">首页</el-menu-item>
             <el-menu-item index="http_event">上网行为</el-menu-item>
             <el-menu-item index="dns_event">域名解析</el-menu-item>
             <el-menu-item index="mal_event">恶意事件</el-menu-item>
-            <el-menu-item index="mal_behavior">恶意行为</el-menu-item>
-            <el-menu-item index="rule_static">静态规则</el-menu-item>
+            <el-menu-item index="rule_static">静态规则库</el-menu-item>
             <el-menu-item index="rule_custom">自定义规则</el-menu-item>
           </el-menu>
         </el-aside>
@@ -31,11 +36,14 @@
 </template>
 
 <script>
+import logo from '../image/logo.png'
+
 export default {
   name: 'Layout',
   data () {
     return {
-      tmd_title: 'TMD流量检测系统',
+      logo: logo,
+      tmd_title: 'TMD流量检测系统 v1.0',
       active_index: ''
     }
   }
@@ -43,24 +51,49 @@ export default {
 </script>
 
 <style scoped>
+.layout{
+  height: 100%;
+}
+.el-container{
+  height: 100%;
+}
 .el-header {
-  background: #000;
+  background: #555555;
 }
-.title-wrapper {
-  font-size: 28px;
-  text-align: center;
-  padding: 10px 10px;
-  color: #fff;
+.title-wrapper{
+  color: white;
+  display: flex;
+  height: 60px;
+  line-height: 60px;
+  font-size: 20px;
+  font-weight: 700;
+  vertical-align: middle;
 }
-.el-aside {
+.logo {
+  flex: 0 0 40px;
+}
+img {
+  margin-top: 15px;
+  width: 30px;
+}
+.el-menu {
+  height: 100%;
+  background: #555555;
 }
 .el-menu-item {
-  font-size: 15px;
+  color: white;
+  font-size: 14px;
+  line-height: 60px;
+  font-weight: 600;
+  display: flex;
+  vertical-align: middle;
 }
 .el-footer {
-  font-size: 16px;
+  color: #929292;
+  background: #fff;
+  height: 50px;
+  line-height: 50px;
   text-align: center;
-  background: #000;
-  color: #fff;
+  font-size: 14px;
 }
 </style>
