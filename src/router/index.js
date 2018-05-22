@@ -7,6 +7,7 @@ import DNSEvent from '@/components/DNSEvent'
 import MalEvent from '@/components/MalEvent'
 import RuleStatic from '@/components/RuleStatic'
 import RuleCustom from '@/components/RuleCustom'
+import About from '@/components/About'
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ export default new Router({
           path: '/rule_custom',
           component: RuleCustom,
           name: '自定义规则'
+        },
+        {
+          path: '/about',
+          component: About,
+          name: '关于TMD'
         }
       ]
     }
