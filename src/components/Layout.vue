@@ -20,6 +20,7 @@
             <el-menu-item index="mal_event">恶意事件</el-menu-item>
             <el-menu-item index="rule_static">静态规则库</el-menu-item>
             <el-menu-item index="rule_custom">自定义规则</el-menu-item>
+            <el-menu-item index="about">关于TMD</el-menu-item>
           </el-menu>
         </el-aside>
         <el-container>
