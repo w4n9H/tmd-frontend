@@ -8,6 +8,7 @@ import MalEvent from '@/components/MalEvent'
 import RuleStatic from '@/components/RuleStatic'
 import RuleCustom from '@/components/RuleCustom'
 import About from '@/components/About'
+import Login from '@/components/Login'
 
 Vue.use(Router)
 
@@ -15,6 +16,14 @@ export default new Router({
   routes: [
     {
       path: '/',
+      component: Login,
+      meta: {
+        name: '登录',
+        requireAuth: false // 添加该字段，表示进入这个路由是需要登录的
+      }
+    },
+    {
+      path: '/layout',
       name: 'Layout',
       component: Layout,
       redirect: '/index',
@@ -22,37 +31,58 @@ export default new Router({
         {
           path: '/index',
           component: Index,
-          name: '首页'
+          meta: {
+            name: '首页',
+            requireAuth: true
+          }
         },
         {
           path: '/http_event',
           component: HTTPEvent,
-          name: '上网行为'
+          meta: {
+            name: '上网行为',
+            requireAuth: true
+          }
         },
         {
           path: '/dns_event',
           component: DNSEvent,
-          name: '域名解析'
+          meta: {
+            name: '域名解析',
+            requireAuth: true
+          }
         },
         {
           path: '/mal_event',
           component: MalEvent,
-          name: '恶意事件'
+          meta: {
+            name: '恶意事件',
+            requireAuth: true
+          }
         },
         {
           path: '/rule_static',
           component: RuleStatic,
-          name: '静态规则'
+          meta: {
+            name: '静态规则',
+            requireAuth: true
+          }
         },
         {
           path: '/rule_custom',
           component: RuleCustom,
-          name: '自定义规则'
+          meta: {
+            name: '自定义规则',
+            requireAuth: true
+          }
         },
         {
           path: '/about',
           component: About,
-          name: '关于TMD'
+          meta: {
+            name: '关于TMD',
+            requireAuth: true
+          }
         }
       ]
     }
