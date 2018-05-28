@@ -9,6 +9,12 @@
           <div>
             <span>{{ tmd_title }}</span>
           </div>
+          <div class="logout_button">
+            <el-button type="info"
+                       @click="onSubmit"
+                       size="mini">登出
+            </el-button>
+          </div>
         </div>
       </el-header>
       <el-container>
@@ -38,6 +44,7 @@
 
 <script>
 import logo from '../image/logo.png'
+import {URLs} from '../config/urls'
 
 export default {
   name: 'Layout',
@@ -46,6 +53,31 @@ export default {
       logo: logo,
       tmd_title: 'TMD流量检测系统 v1.0',
       active_index: ''
+    }
+  },
+  methods: {
+    onSubmit () {
+      this.$get(URLs.Logout)
+        .then(
+          (response) => {
+            if (response.status === 0) {
+              let sessionId = localStorage.getItem('session_id')
+              if (sessionId) {
+                localStorage.removeItem('session_id')
+              }
+              let userName = localStorage.getItem('username')
+              if (userName) {
+                localStorage.removeItem('username')
+              }
+              this.$router.push('/')
+            }
+          }
+        )
+        .catch(
+          err => {
+            console.log(err)
+          }
+        )
     }
   }
 }
@@ -72,6 +104,9 @@ export default {
 }
 .logo {
   flex: 0 0 40px;
+}
+.logout_button {
+  padding-left: 80%;
 }
 img {
   margin-top: 15px;
