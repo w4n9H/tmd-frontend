@@ -1,4 +1,5 @@
 import axios from 'axios'
+import router from '../router'
 import { Message } from 'element-ui'
 
 axios.defaults.timeout = 10000 // 超时时间 10s
@@ -6,6 +7,10 @@ axios.defaults.timeout = 10000 // 超时时间 10s
 // request 拦截器
 axios.interceptors.request.use(
   config => {
+    let sessionId = localStorage.getItem('session_id')
+    if (sessionId) { // 判断是否存在token，如果存在的话，则每个http header都加上token
+      config.headers.Authorization = sessionId
+    }
     return config
   },
   error => {
@@ -30,6 +35,11 @@ axios.interceptors.response.use(
         case 504:
           Message.error('服务器连接超时')
           break
+        case 401:
+          router.replace({
+            path: '/login',
+            query: {redirect: router.currentRoute.fullPath}
+          })
       }
     }
     return Promise.reject(error)
